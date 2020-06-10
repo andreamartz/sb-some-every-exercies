@@ -32,7 +32,7 @@ Examples:
 */
 
 function hasOnlyOddNumbers(arr) {
-  return arr.every((num) => num % 2 === 1);
+  return arr.every((num) => num % 2 == 1);
 }
 
 /*
@@ -43,7 +43,22 @@ Examples:
     hasNoDuplicates([1,2,3]) // true
 */
 
-function hasNoDuplicates(arr) {}
+function hasNoDuplicates(arr) {
+  // count the number of times each value occurs in the array
+  const countObj = {};
+  arr.forEach((val) => {
+    countObj[val] = countObj[val] ? countObj[val] + 1 : 1;
+  });
+
+  // extract the counts to an array
+  const newArr = [];
+  for (key in countObj) {
+    newArr.push(countObj[key]);
+  }
+
+  // if all counts are 1, return true
+  return newArr.every((el) => el === 1);
+}
 
 /*
 Write a function called hasCertainKey which accepts an array of objects and a key, and returns true if every single object in the array contains that key. Otherwise it should return false.

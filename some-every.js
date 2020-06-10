@@ -32,7 +32,7 @@ Examples:
 */
 
 function hasOnlyOddNumbers(arr) {
-  return arr.every((num) => num % 2 == 1);
+  return arr.every((num) => num % 2 !== 0);
 }
 
 /*
@@ -43,21 +43,27 @@ Examples:
     hasNoDuplicates([1,2,3]) // true
 */
 
+// FIRST TRY hasNoDuplicates fcn
+// function hasNoDuplicates(arr) {
+// count the number of times each value occurs in the array
+//   const countObj = {};
+//   arr.forEach((val) => {
+//     countObj[val] = countObj[val] ? countObj[val] + 1 : 1;
+//   });
+
+// extract the counts to an array
+//   const newArr = [];
+//   for (key in countObj) {
+//     newArr.push(countObj[key]);
+//   }
+
+// if all counts are 1, return true
+//   return newArr.every((el) => el === 1);
+// }
+
+// IMPROVED hasNoDuplicates fcn
 function hasNoDuplicates(arr) {
-  // count the number of times each value occurs in the array
-  const countObj = {};
-  arr.forEach((val) => {
-    countObj[val] = countObj[val] ? countObj[val] + 1 : 1;
-  });
-
-  // extract the counts to an array
-  const newArr = [];
-  for (key in countObj) {
-    newArr.push(countObj[key]);
-  }
-
-  // if all counts are 1, return true
-  return newArr.every((el) => el === 1);
+  return arr.every((val) => arr.indexOf(val) === arr.lastIndexOf(val));
 }
 
 /*

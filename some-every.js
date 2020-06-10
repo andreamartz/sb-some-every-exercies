@@ -18,7 +18,10 @@ Examples:
     hasAZero(1212121) // false
 */
 
-function hasAZero(num) {}
+function hasAZero(num) {
+  const numArr = Array.from(String(num), Number);
+  return numArr.some((digit) => digit === 0);
+}
 
 /*
 Write a function called hasOnlyOddNumbers which accepts an array and returns true if every single number in the array is odd. If any of the values in the array are not odd, the function should return false. 
